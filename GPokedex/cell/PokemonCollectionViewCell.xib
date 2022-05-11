@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,53 +17,61 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxE-im-hYR">
-                        <rect key="frame" x="5" y="5" width="158" height="158"/>
+                        <rect key="frame" x="0.0" y="0.0" width="168" height="168"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhS-1x-BQD">
-                                <rect key="frame" x="8" y="10" width="142" height="20.5"/>
+                                <rect key="frame" x="18" y="118.5" width="150" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-P6-9mf">
-                                <rect key="frame" x="52" y="34.5" width="101" height="118.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="118.5" id="1jD-zM-5UL"/>
-                                    <constraint firstAttribute="width" constant="101" id="vv2-PI-4Hg"/>
-                                </constraints>
+                                <rect key="frame" x="34" y="10" width="100" height="100.5"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lz1-sI-kkf">
+                                <rect key="frame" x="18" y="139" width="34" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="type">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NhS-1x-BQD" firstAttribute="leading" secondItem="cxE-im-hYR" secondAttribute="leading" constant="8" id="5mY-PY-g65"/>
-                            <constraint firstItem="ifM-P6-9mf" firstAttribute="leading" secondItem="cxE-im-hYR" secondAttribute="leading" constant="52" id="6Xk-oj-KVM"/>
-                            <constraint firstAttribute="trailing" secondItem="NhS-1x-BQD" secondAttribute="trailing" constant="8" id="PRr-YV-ACo"/>
-                            <constraint firstAttribute="trailing" secondItem="ifM-P6-9mf" secondAttribute="trailing" constant="5" id="U0B-4q-s8L"/>
-                            <constraint firstItem="NhS-1x-BQD" firstAttribute="top" secondItem="cxE-im-hYR" secondAttribute="top" constant="10" id="ehJ-jM-feY"/>
-                            <constraint firstAttribute="bottom" secondItem="ifM-P6-9mf" secondAttribute="bottom" constant="5" id="p4b-fS-uqg"/>
+                            <constraint firstAttribute="trailing" secondItem="NhS-1x-BQD" secondAttribute="trailing" id="C3K-30-6dh"/>
+                            <constraint firstAttribute="trailing" secondItem="ifM-P6-9mf" secondAttribute="trailing" constant="34" id="LJV-pF-BSl"/>
+                            <constraint firstItem="NhS-1x-BQD" firstAttribute="top" secondItem="ifM-P6-9mf" secondAttribute="bottom" constant="8" symbolic="YES" id="PdJ-Yd-IJa"/>
+                            <constraint firstItem="NhS-1x-BQD" firstAttribute="leading" secondItem="cxE-im-hYR" secondAttribute="leading" constant="18" id="QRY-vx-6J0"/>
+                            <constraint firstItem="Lz1-sI-kkf" firstAttribute="top" secondItem="NhS-1x-BQD" secondAttribute="bottom" id="YYx-pc-Unr"/>
+                            <constraint firstItem="ifM-P6-9mf" firstAttribute="top" secondItem="cxE-im-hYR" secondAttribute="top" constant="10" id="g2i-LO-6Tm"/>
+                            <constraint firstItem="Lz1-sI-kkf" firstAttribute="bottom" secondItem="cxE-im-hYR" secondAttribute="bottomMargin" id="hmh-V8-c9u"/>
+                            <constraint firstItem="Lz1-sI-kkf" firstAttribute="leading" secondItem="cxE-im-hYR" secondAttribute="leading" constant="18" id="tk9-5w-gKh"/>
+                            <constraint firstItem="ifM-P6-9mf" firstAttribute="leading" secondItem="cxE-im-hYR" secondAttribute="leading" constant="34" id="uFw-1C-AAP"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="cxE-im-hYR" secondAttribute="bottom" constant="5" id="KLZ-eX-wB4"/>
-                <constraint firstItem="cxE-im-hYR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="gMx-qU-a0R"/>
-                <constraint firstAttribute="trailing" secondItem="cxE-im-hYR" secondAttribute="trailing" constant="5" id="rPS-9g-85o"/>
-                <constraint firstItem="cxE-im-hYR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="vuI-xh-OSd"/>
+                <constraint firstItem="cxE-im-hYR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5s3-KU-Zv1"/>
+                <constraint firstAttribute="trailing" secondItem="cxE-im-hYR" secondAttribute="trailing" id="DMs-vx-55W"/>
+                <constraint firstItem="cxE-im-hYR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lTL-zI-Bxh"/>
+                <constraint firstAttribute="bottom" secondItem="cxE-im-hYR" secondAttribute="bottom" id="qhc-XD-fSo"/>
             </constraints>
             <size key="customSize" width="168" height="168"/>
             <connections>
                 <outlet property="nameLabel" destination="NhS-1x-BQD" id="1uK-07-CO6"/>
                 <outlet property="picImage" destination="ifM-P6-9mf" id="QYF-Nr-Xzx"/>
+                <outlet property="typeLabel" destination="Lz1-sI-kkf" id="BTu-6K-bxd"/>
                 <outlet property="viewBackground" destination="cxE-im-hYR" id="zUE-ga-e1f"/>
             </connections>
             <point key="canvasLocation" x="223.18840579710147" y="175.44642857142856"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

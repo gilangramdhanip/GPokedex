@@ -74,5 +74,36 @@ class APIService {
         }
         dataTask?.resume()
     }
+    
+    func getColorPokemon(link : String, completion : @escaping (Result<PokemonColor, Error>) -> Void) {
+        let detailURL = "\(link)"
+        guard let url = URL(string: detailURL) else {return }
+        dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask Error : \(error.localizedDescription)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {
+                print("Empty Response")
+                return
+            }
+            print("Response status code : \(response.statusCode)")
+            guard let data = data else {
+                print("Empty Data")
+                return
+            }
+            do {
+                let decode = JSONDecoder()
+                let jsonData = try decode.decode(PokemonColor.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+        dataTask?.resume()
+    }
 
 }

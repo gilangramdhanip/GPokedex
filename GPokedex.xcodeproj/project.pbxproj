@@ -30,6 +30,7 @@
 		C00B5B63282ABB3B00BA1A72 /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B62282ABB3B00BA1A72 /* UIImageView+extension.swift */; };
 		C00B5B65282AC7B100BA1A72 /* DetailPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */; };
 		C00B5B67282ACBBB00BA1A72 /* DetailPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B66282ACBBB00BA1A72 /* DetailPokemonViewModel.swift */; };
+		C05B1DC0282C2481003BC45C /* PokemonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B1DBF282C2481003BC45C /* PokemonColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C00B5B62282ABB3B00BA1A72 /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemon.swift; sourceTree = "<group>"; };
 		C00B5B66282ACBBB00BA1A72 /* DetailPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonViewModel.swift; sourceTree = "<group>"; };
+		C05B1DBF282C2481003BC45C /* PokemonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				C00B5B58282AB80100BA1A72 /* PokemonModel.swift */,
 				C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */,
+				C05B1DBF282C2481003BC45C /* PokemonColor.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				C00B5B53282AB62400BA1A72 /* FavoriteViewController.swift in Sources */,
 				C00B5B67282ACBBB00BA1A72 /* DetailPokemonViewModel.swift in Sources */,
 				C00B5B16282A8FF000BA1A72 /* ViewController.swift in Sources */,
+				C05B1DC0282C2481003BC45C /* PokemonColor.swift in Sources */,
 				C00B5B12282A8FF000BA1A72 /* AppDelegate.swift in Sources */,
 				C00B5B5B282AB82200BA1A72 /* PokemonViewModel.swift in Sources */,
 				C00B5B14282A8FF000BA1A72 /* SceneDelegate.swift in Sources */,

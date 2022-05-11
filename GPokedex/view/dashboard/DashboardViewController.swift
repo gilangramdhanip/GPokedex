@@ -12,6 +12,7 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var dashboardTableView: UICollectionView!
     private var pokemonViewModel = PokemonoViewModel()
 
+    
     private var saveImageUrl : [String] = []
     
     override func viewDidLoad() {
@@ -53,7 +54,7 @@ extension DashboardViewController : UICollectionViewDelegateFlowLayout{
             sizeForItemAt indexPath: IndexPath) -> CGSize {
                 let lay = collectionViewLayout as! UICollectionViewFlowLayout
                 let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-                return CGSize(width: widthPerItem - 8, height: 250)
+                return CGSize(width: widthPerItem - 8, height: 168)
         }
 }
 

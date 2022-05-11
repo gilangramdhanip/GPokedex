@@ -21,7 +21,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var picImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var typeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,16 +29,44 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     
     
     func setUpUI(pokemon : Results){
-        nameLabel.text = pokemon.name
-        detailViewModel.fetchDetailMovieData(link: pokemon.url) { data in
-            DispatchQueue.main.async {
+        
+        nameLabel.textColor = .white
+        typeLabel.textColor = .white
+        viewBackground.layer.cornerRadius = 10
+
+        typeLabel.backgroundColor = UIColor(named: "customDarkGray")
+        typeLabel.layer.cornerRadius = 5
+        typeLabel.layer.masksToBounds = true
+
+        
+        nameLabel.text = " \(pokemon.name) "
+        detailViewModel.fetchDetailPokemonData(link: pokemon.url) { data in
                 
             self.picImage.cacheImage(urlString: data.sprites.other?.home.frontDefault ?? "")
-                
+            
+                self.typeLabel.text = "\u{200c} \(data.types[0].type.name) \u{200c}"
+            
+            
+            self.detailViewModel.fetchPokemonColor(link: data.species.url) { moreData in
+                let color = moreData.color.name
+                        if color == "green"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customGreen")
+                            }else if color == "red"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customRed")
+                            }else if color == "blue"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customBlue")
+                            }else if color == "purple"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customPurple")
+                            }else if color == "brown"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customBrown")
+                            }else if color == "yellow"{
+                                self.viewBackground.backgroundColor = UIColor(named: "customYellow")
+                            }else{
+                                self.viewBackground.backgroundColor = UIColor(named: "customLightGray")
+                            }
             }
+            
         }
-        viewBackground.backgroundColor = .blue
-        
     }
 
 }
