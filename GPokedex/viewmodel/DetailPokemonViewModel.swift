@@ -9,9 +9,9 @@ import Foundation
 
 class DetailPokemonViewModel {
     private var apiService = APIService()
-    private var pokemon = [DetailPokemon]()
+    private var pokemon = [DetailPokemonModel]()
     var isLoading: Bool = false
-    func fetchDetailPokemonData(link : String, completion: @escaping (DetailPokemon) -> Void) {
+    func fetchDetailPokemonData(link : String, completion: @escaping (DetailPokemonModel) -> Void) {
         apiService.getDetailPokemon(link: link) { [ weak self] (result) in
             switch result {
             case .success(let listOf):
@@ -25,7 +25,7 @@ class DetailPokemonViewModel {
         }
     }
     
-    func fetchPokemonColor(link : String, completion: @escaping (PokemonColor) -> Void) {
+    func fetchPokemonColor(link : String, completion: @escaping (PokemonColorModel) -> Void) {
         apiService.getColorPokemon(link: link) { [ weak self] (result) in
             switch result {
             case .success(let listOf):
@@ -44,7 +44,7 @@ class DetailPokemonViewModel {
         }
         return 0
     }
-    func cellForRowAt (indexPath : IndexPath) -> DetailPokemon {
+    func cellForRowAt (indexPath : IndexPath) -> DetailPokemonModel {
         return pokemon[indexPath.row]
     }
 }

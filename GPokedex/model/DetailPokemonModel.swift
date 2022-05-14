@@ -8,19 +8,19 @@
 import Foundation
 
 // MARK: - MoviesReview
-struct DetailPokemon: Codable {
-    let abilities: [Ability]
-    let baseExperience: Int
-    let forms: [Species]
-    let gameIndices: [GameIndex]
-    let height: Int
+struct DetailPokemonModel: Codable {
+//    let abilities: [Ability]
+//    let baseExperience: Int
+//    let forms: [Species]
+//    let gameIndices: [GameIndex]
+//    let height: Int
     let id: Int
-    let isDefault: Bool
-    let locationAreaEncounters: String
-    let moves: [Move]
+//    let isDefault: Bool
+//    let locationAreaEncounters: String
+//    let moves: [Move]
     let name: String
     let order: Int
-    let pastTypes: [String]
+//    let pastTypes: [String]
     let species: Species
     let sprites: Sprites
     let stats: [Stat]
@@ -28,16 +28,16 @@ struct DetailPokemon: Codable {
     let weight: Int
 
     enum CodingKeys: String, CodingKey {
-        case abilities
-        case baseExperience = "base_experience"
-        case forms
-        case gameIndices = "game_indices"
-        case height
+//        case abilities
+//        case baseExperience = "base_experience"
+//        case forms
+//        case gameIndices = "game_indices"
+//        case height
         case id
-        case isDefault = "is_default"
-        case locationAreaEncounters = "location_area_encounters"
-        case moves, name, order
-        case pastTypes = "past_types"
+//        case isDefault = "is_default"
+//        case locationAreaEncounters = "location_area_encounters"
+        case name, order
+//        case pastTypes = "past_types"
         case species, sprites, stats, types, weight
     }
 }

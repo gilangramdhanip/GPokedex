@@ -13,7 +13,7 @@ class APIService {
     private var dataTask : URLSessionDataTask?
     private var url = "https://pokeapi.co/api/v2/"
     func fetchAllPokemon(offset: String, completion : @escaping (Result<PokemonModel, Error>) -> Void) {
-        let moviesURL = "\(url)pokemon?offset\(offset)&;amp;limit=20"
+        let moviesURL = "\(url)pokemon?offset=\(offset)&;amp;limit=20"
         let newUrl = moviesURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         guard let url = URL(string: newUrl!) else {return }
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -44,7 +44,7 @@ class APIService {
         dataTask?.resume()
     }
     
-    func getDetailPokemon(link : String, completion : @escaping (Result<DetailPokemon, Error>) -> Void) {
+    func getDetailPokemon(link : String, completion : @escaping (Result<DetailPokemonModel, Error>) -> Void) {
         let detailURL = "\(link)"
         guard let url = URL(string: detailURL) else {return }
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -64,7 +64,7 @@ class APIService {
             }
             do {
                 let decode = JSONDecoder()
-                let jsonData = try decode.decode(DetailPokemon.self, from: data)
+                let jsonData = try decode.decode(DetailPokemonModel.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -75,7 +75,7 @@ class APIService {
         dataTask?.resume()
     }
     
-    func getColorPokemon(link : String, completion : @escaping (Result<PokemonColor, Error>) -> Void) {
+    func getColorPokemon(link : String, completion : @escaping (Result<PokemonColorModel, Error>) -> Void) {
         let detailURL = "\(link)"
         guard let url = URL(string: detailURL) else {return }
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -95,7 +95,7 @@ class APIService {
             }
             do {
                 let decode = JSONDecoder()
-                let jsonData = try decode.decode(PokemonColor.self, from: data)
+                let jsonData = try decode.decode(PokemonColorModel.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
@@ -105,5 +105,5 @@ class APIService {
         }
         dataTask?.resume()
     }
-
+    
 }

@@ -9,8 +9,11 @@ import Foundation
 
 class PokemonoViewModel {
     private var apiService = APIService()
-    private var pokemon = [Results]()
+    var pokemon = [Results]()
     var isLoading: Bool = false
+    var pokemonTotalCount : Int?
+    var next : String?
+    var previous : String?
     private var filtered: [String]!
     
     func fetchMovieData(offset: String, completion: @escaping (PokemonModel) -> Void) {
@@ -19,6 +22,9 @@ class PokemonoViewModel {
             case .success(let listOf):
                 self?.isLoading = false
                 self?.pokemon = listOf.results
+                self?.pokemonTotalCount = listOf.count
+                self?.next = listOf.next
+                self?.previous = listOf.previous
                 completion(listOf)
             case.failure(let error):
                 self?.isLoading = true

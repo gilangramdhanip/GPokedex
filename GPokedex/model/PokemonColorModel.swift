@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonColor: Codable {
+struct PokemonColorModel: Codable {
     let color: Color
 
     enum CodingKeys: String, CodingKey {

@@ -28,9 +28,11 @@
 		C00B5B5F282AB99C00BA1A72 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B5D282AB99C00BA1A72 /* PokemonCollectionViewCell.swift */; };
 		C00B5B60282AB99C00BA1A72 /* PokemonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C00B5B5E282AB99C00BA1A72 /* PokemonCollectionViewCell.xib */; };
 		C00B5B63282ABB3B00BA1A72 /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B62282ABB3B00BA1A72 /* UIImageView+extension.swift */; };
-		C00B5B65282AC7B100BA1A72 /* DetailPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */; };
+		C00B5B65282AC7B100BA1A72 /* DetailPokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B64282AC7B100BA1A72 /* DetailPokemonModel.swift */; };
 		C00B5B67282ACBBB00BA1A72 /* DetailPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00B5B66282ACBBB00BA1A72 /* DetailPokemonViewModel.swift */; };
-		C05B1DC0282C2481003BC45C /* PokemonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B1DBF282C2481003BC45C /* PokemonColor.swift */; };
+		C05B1DC0282C2481003BC45C /* PokemonColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B1DBF282C2481003BC45C /* PokemonColorModel.swift */; };
+		C073EE43282D4F2B0035FB95 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C073EE42282D4F2B0035FB95 /* PersistanceManager.swift */; };
+		C073EE45282D559A0035FB95 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C073EE44282D559A0035FB95 /* Favorite.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +78,11 @@
 		C00B5B5D282AB99C00BA1A72 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		C00B5B5E282AB99C00BA1A72 /* PokemonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCollectionViewCell.xib; sourceTree = "<group>"; };
 		C00B5B62282ABB3B00BA1A72 /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
-		C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemon.swift; sourceTree = "<group>"; };
+		C00B5B64282AC7B100BA1A72 /* DetailPokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonModel.swift; sourceTree = "<group>"; };
 		C00B5B66282ACBBB00BA1A72 /* DetailPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPokemonViewModel.swift; sourceTree = "<group>"; };
-		C05B1DBF282C2481003BC45C /* PokemonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonColor.swift; sourceTree = "<group>"; };
+		C05B1DBF282C2481003BC45C /* PokemonColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonColorModel.swift; sourceTree = "<group>"; };
+		C073EE42282D4F2B0035FB95 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		C073EE44282D559A0035FB95 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				C00B5B58282AB80100BA1A72 /* PokemonModel.swift */,
-				C00B5B64282AC7B100BA1A72 /* DetailPokemon.swift */,
-				C05B1DBF282C2481003BC45C /* PokemonColor.swift */,
+				C00B5B64282AC7B100BA1A72 /* DetailPokemonModel.swift */,
+				C05B1DBF282C2481003BC45C /* PokemonColorModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -197,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				C00B5B4C282A995C00BA1A72 /* APIService.swift */,
+				C073EE42282D4F2B0035FB95 /* PersistanceManager.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				C00B5B52282AB62400BA1A72 /* FavoriteViewController.swift */,
+				C073EE44282D559A0035FB95 /* Favorite.storyboard */,
 			);
 			path = favorite;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 			files = (
 				C00B5B21282A8FF200BA1A72 /* LaunchScreen.storyboard in Resources */,
 				C00B5B1E282A8FF200BA1A72 /* Assets.xcassets in Resources */,
+				C073EE45282D559A0035FB95 /* Favorite.storyboard in Resources */,
 				C00B5B19282A8FF000BA1A72 /* Main.storyboard in Resources */,
 				C00B5B57282AB63A00BA1A72 /* Detail.storyboard in Resources */,
 				C00B5B60282AB99C00BA1A72 /* PokemonCollectionViewCell.xib in Resources */,
@@ -385,14 +392,15 @@
 				C00B5B53282AB62400BA1A72 /* FavoriteViewController.swift in Sources */,
 				C00B5B67282ACBBB00BA1A72 /* DetailPokemonViewModel.swift in Sources */,
 				C00B5B16282A8FF000BA1A72 /* ViewController.swift in Sources */,
-				C05B1DC0282C2481003BC45C /* PokemonColor.swift in Sources */,
+				C05B1DC0282C2481003BC45C /* PokemonColorModel.swift in Sources */,
 				C00B5B12282A8FF000BA1A72 /* AppDelegate.swift in Sources */,
 				C00B5B5B282AB82200BA1A72 /* PokemonViewModel.swift in Sources */,
 				C00B5B14282A8FF000BA1A72 /* SceneDelegate.swift in Sources */,
-				C00B5B65282AC7B100BA1A72 /* DetailPokemon.swift in Sources */,
+				C00B5B65282AC7B100BA1A72 /* DetailPokemonModel.swift in Sources */,
 				C00B5B59282AB80100BA1A72 /* PokemonModel.swift in Sources */,
 				C00B5B63282ABB3B00BA1A72 /* UIImageView+extension.swift in Sources */,
 				C00B5B55282AB62E00BA1A72 /* DetailViewController.swift in Sources */,
+				C073EE43282D4F2B0035FB95 /* PersistanceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -554,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -579,10 +587,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Dashboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gilang.GPokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,10 +617,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Dashboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gilang.GPokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -151,15 +151,20 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hT1-gA-kBl">
+                                                <rect key="frame" x="188.5" y="481.5" width="37" height="37"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="sIK-rU-sdI" secondAttribute="trailing" constant="20" symbolic="YES" id="2c7-R1-oG3"/>
                                             <constraint firstItem="Sh9-iD-cWz" firstAttribute="top" secondItem="U9p-LG-Zeh" secondAttribute="top" constant="15" id="5gs-RS-um1"/>
+                                            <constraint firstItem="hT1-gA-kBl" firstAttribute="centerY" secondItem="U9p-LG-Zeh" secondAttribute="centerY" id="9dR-pK-tjf"/>
                                             <constraint firstAttribute="trailing" secondItem="8By-6d-dB9" secondAttribute="trailing" constant="20" symbolic="YES" id="CsZ-8g-Xbf"/>
                                             <constraint firstItem="sIK-rU-sdI" firstAttribute="top" secondItem="E5c-vA-X8j" secondAttribute="bottom" constant="21" id="DAj-te-GmN"/>
                                             <constraint firstAttribute="height" constant="1000" id="Duf-6Q-Nw0"/>
                                             <constraint firstItem="sIK-rU-sdI" firstAttribute="leading" secondItem="U9p-LG-Zeh" secondAttribute="leading" constant="20" symbolic="YES" id="HCC-mq-crf"/>
+                                            <constraint firstItem="hT1-gA-kBl" firstAttribute="centerX" secondItem="U9p-LG-Zeh" secondAttribute="centerX" id="JMo-rG-cQ3"/>
                                             <constraint firstItem="E5c-vA-X8j" firstAttribute="leading" secondItem="U9p-LG-Zeh" secondAttribute="leading" constant="20" symbolic="YES" id="Og0-aH-BTa"/>
                                             <constraint firstItem="Sh9-iD-cWz" firstAttribute="leading" secondItem="U9p-LG-Zeh" secondAttribute="leading" constant="20" symbolic="YES" id="QgV-Oy-Ref"/>
                                             <constraint firstItem="8By-6d-dB9" firstAttribute="top" secondItem="Sh9-iD-cWz" secondAttribute="bottom" constant="8" symbolic="YES" id="cP5-Ad-FTi"/>
@@ -190,18 +195,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cAM-u1-aki">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="mYQ-Wd-tCs" colorLabel="IBBuiltInLabel-Gray"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="mYQ-Wd-tCs" colorLabel="IBBuiltInLabel-Gray">
+                            <connections>
+                                <action selector="favoritePressed:" destination="Y6W-OH-hqX" id="Hm2-U0-ydQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="attackValue" destination="jxA-rn-FT8" id="WbF-F3-hMa"/>
                         <outlet property="backgroundView" destination="5EZ-qb-Rvc" id="S28-QM-QkG"/>
                         <outlet property="deffenseValue" destination="UTi-Gn-Toi" id="oyT-QX-ShC"/>
+                        <outlet property="favButton" destination="mYQ-Wd-tCs" id="Tme-MP-nLB"/>
                         <outlet property="favoriteButton" destination="mYQ-Wd-tCs" id="hLa-ND-9cF"/>
                         <outlet property="hpValueLabel" destination="CTj-cf-4Sh" id="hdR-GQ-TTP"/>
                         <outlet property="imagePokemon" destination="Sh9-iD-cWz" id="4hn-xK-52D"/>
                         <outlet property="namePokemon" destination="8By-6d-dB9" id="viM-Gk-vYb"/>
+                        <outlet property="navbarItem" destination="cAM-u1-aki" id="u5b-eU-cku"/>
                         <outlet property="scrollView" destination="IUK-Yh-p6l" id="Wgd-oG-kNY"/>
+                        <outlet property="spinner" destination="hT1-gA-kBl" id="LZz-Hr-4IX"/>
                         <outlet property="transparentBackground" destination="sIK-rU-sdI" id="aeM-U1-oG3"/>
                         <outlet property="typePokemon" destination="E5c-vA-X8j" id="Jd2-dv-B62"/>
                     </connections>
