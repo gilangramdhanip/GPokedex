@@ -26,23 +26,28 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        numberPokemon.textColor = .white
         nameLabel.textColor = .white
         typeLabel.textColor = .white
         viewBackground.layer.cornerRadius = 10
+        self.viewBackground.layer.shadowColor = UIColor.black.cgColor
+        self.viewBackground.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.viewBackground.layer.shadowRadius = 3.0
+        self.viewBackground.layer.shadowOpacity = 0.5
+        self.layer.masksToBounds = false
         
         typeLabel.backgroundColor = UIColor(named: "customDarkGray")
         typeLabel.layer.cornerRadius = 5
         typeLabel.layer.masksToBounds = true
     }
     
-    
+    //Binding data dari data CoreData
     func setUpUIFavorite(pokemon : Pokemon){
         
-        nameLabel.text = pokemon.name
+        nameLabel.text = pokemon.name?.capitalized
         numberPokemon.text = "#\(pokemon.id ?? "0")"
         picImage.cacheImage(urlString: pokemon.image!)
-        typeLabel.text = "\u{200c} \(pokemon.type ?? "") \u{200c}"
+        typeLabel.text = "\u{200c} \(pokemon.type?.capitalized ?? "") \u{200c}"
         if pokemon.color == "green"{
             viewBackground.backgroundColor = UIColor(named: "customGreen")
         }else if pokemon.color == "red"{
@@ -62,14 +67,14 @@ class PokemonCollectionViewCell: UICollectionViewCell {
         
     }
     
-    
+    //Binding data dari data API
     func setUpUI(pokemon : Results){
 
         detailViewModel.fetchDetailPokemonData(link: pokemon.url) { data in
-            self.nameLabel.text = " \(data.name) "
+            self.nameLabel.text = " \(data.name.capitalized) "
             self.numberPokemon.text = "#\(data.id)"
             self.picImage.cacheImage(urlString: data.sprites.other?.home.frontDefault ?? "")
-            self.typeLabel.text = "\u{200c} \(data.types[0].type.name) \u{200c}"
+            self.typeLabel.text = "\u{200c} \(data.types[0].type.name.capitalized) \u{200c}"
             self.detailViewModel.fetchPokemonColor(link: data.species.url) { moreData in
 
                 let color = moreData.color.name

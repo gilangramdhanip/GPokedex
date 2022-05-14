@@ -22,7 +22,7 @@ extension UIImageView {
         
       URLSession.shared.dataTask(with: url ?? URL(fileURLWithPath: "")) {
         data, response, error in
-          DispatchQueue.global(qos: .utility).async {
+          DispatchQueue.global().async {
           
         if data != nil {
               DispatchQueue.main.async {

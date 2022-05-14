@@ -12,6 +12,8 @@ class APIService {
     
     private var dataTask : URLSessionDataTask?
     private var url = "https://pokeapi.co/api/v2/"
+    
+    //Load API untuk list pokemon
     func fetchAllPokemon(offset: String, completion : @escaping (Result<PokemonModel, Error>) -> Void) {
         let moviesURL = "\(url)pokemon?offset=\(offset)&;amp;limit=20"
         let newUrl = moviesURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
@@ -44,6 +46,7 @@ class APIService {
         dataTask?.resume()
     }
     
+    //Load untuk mengambil detail pokemon berdasarkan url dari fetchAllPokemon
     func getDetailPokemon(link : String, completion : @escaping (Result<DetailPokemonModel, Error>) -> Void) {
         let detailURL = "\(link)"
         guard let url = URL(string: detailURL) else {return }
@@ -75,6 +78,7 @@ class APIService {
         dataTask?.resume()
     }
     
+    //Mengambil warna pokemon untuk background
     func getColorPokemon(link : String, completion : @escaping (Result<PokemonColorModel, Error>) -> Void) {
         let detailURL = "\(link)"
         guard let url = URL(string: detailURL) else {return }

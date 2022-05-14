@@ -37,6 +37,7 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController : UICollectionViewDelegateFlowLayout{
     
+    //Untuk mengatur ukuran dari UICollectionview dan menjadikan 2 Kolom
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -17,6 +17,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var deffenseValue: UILabel!
     var orderID : Results?
     var listForm : String?
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var weightPokemon: UILabel!
     var pokemonData : String?
     private var favPokemon : [Pokemon] = []
     @IBOutlet weak var favButton: UIBarButtonItem!
@@ -33,15 +35,18 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         favoriteButton.tintColor = .white
-            
+        backButton.tintColor = .white
         transparentBackground.layer.cornerRadius = 10
         
         loadDetail()
         loadBar()
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         loadDetail()
         loadBar()
@@ -61,6 +66,7 @@ class DetailViewController: UIViewController {
     
     func loadDetail(){
         favPokemon = PersitanceManager.shared.fetchFavoritPokemon()
+        //Menerima url dari halaman dashboard untuk load detail
                 if listForm == "Dashboard" {
                     pokemonData = orderID?.url
                 }
@@ -79,15 +85,21 @@ class DetailViewController: UIViewController {
         }
         
         detailViewModel.fetchDetailPokemonData(link: pokemonData!){ data in
+            
+            //Mengambil Detail dari list yang dipilih
             self.dataPokemon = data
-            self.namePokemon.text = "\(data.name) #\(data.id)"
+            self.namePokemon.text = "\(data.name.capitalized) #\(data.id)"
+            self.weightPokemon.text = "\(data.weight) Kg"
             self.imagePokemon.cacheImage(urlString: data.sprites.other?.home.frontDefault ?? "")
             self.hpValueLabel.text = "\(data.stats[0].baseStat )"
             self.attackValue.text = "\(data.stats[1].baseStat)"
             self.deffenseValue.text = "\(data.stats[2].baseStat)"
-            self.typePokemon.text = "\u{200c} \(data.types[0].type.name) \u{200c}"
+            self.typePokemon.backgroundColor = UIColor(named: "customDarkGray")
+            self.typePokemon.layer.cornerRadius = 5
+            self.typePokemon.layer.masksToBounds = true
+            self.typePokemon.text = "\u{200c} \(data.types[0].type.name.capitalized) \u{200c}"
             
-            
+            //Mengambil Warna dari list yang dipilih
             self.detailViewModel.fetchPokemonColor(link: data.species.url) { moreData in
                 self.favoriteButton.isEnabled = true
                 self.spinner.stopAnimating()
@@ -96,6 +108,7 @@ class DetailViewController: UIViewController {
                 let color = moreData.color.name
                 self.colorPokemon = moreData
                 if color == "green"{
+                    
                     self.backgroundView.backgroundColor = UIColor(named: "customGreen")
                 }else if color == "red"{
                     self.backgroundView.backgroundColor = UIColor(named: "customRed")
@@ -125,14 +138,14 @@ class DetailViewController: UIViewController {
             for item in favPokemon {
                 if item.url == pokemonData {
                     PersitanceManager.shared.unFavoritePokemon(pokemon: item)
-                    showToast(controller: self, message: "Removed favorite movie", seconds: 1.0, navigationController : navigationController!)
+                    showToast(controller: self, message: "Removed favorite pokemon", seconds: 1.0, navigationController : navigationController!)
                 }
             }
         } else {
             isFavorite = false
             favButton.image = UIImage(systemName: "heart.fill")
             PersitanceManager.shared.favoritePokemon(pokemonModel: dataPokemon!, isFavorite: true, pokemonColor: colorPokemon!, url : orderID!.url)
-            showToast(controller: self, message: "Added favorite movie", seconds: 1.0, navigationController : navigationController!)
+            showToast(controller: self, message: "Added favorite pokemon", seconds: 1.0, navigationController : navigationController!)
         }
         
     }

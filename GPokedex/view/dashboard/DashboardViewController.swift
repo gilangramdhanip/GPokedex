@@ -18,6 +18,7 @@ class DashboardViewController: UIViewController {
     private var searchFilteredPokemon = [Results]()
     var tampungOffset = 0
     var tampungPage = 1
+    var tampungMaxPage : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +30,18 @@ class DashboardViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 4
-        
-        //Call Gallery Collection cell
+
         buttonPrevious.isEnabled = false
         dashboardTableView.setCollectionViewLayout(layout, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        changePageNumber(numberPageCount: tampungPage)
         loadPokemonList(offset: "\(tampungOffset)")
         loadBar()
     }
     
-    func changePageNumber(numberPageCount : Int){
-        numberPage.setTitle("Page \(numberPageCount)", for: .normal)
+    func changePageNumber(numberPageCount : Int, maxPage : Int){
+        numberPage.setTitle("Page \(numberPageCount) / \(maxPage)", for: .normal)
         numberPage.isUserInteractionEnabled = false
         
     }
@@ -62,9 +61,15 @@ class DashboardViewController: UIViewController {
     private func loadPokemonList(offset : String){
         pokemonViewModel.fetchMovieData(offset: offset){ data in
             
+            let lastPage = Double(self.pokemonViewModel.pokemonTotalCount!) / 20.0
+            
+            self.tampungMaxPage = Int(lastPage.rounded(.up))
+            
+            self.changePageNumber(numberPageCount: self.tampungPage, maxPage: self.tampungMaxPage ?? 0)
             self.spinner.stopAnimating()
             self.spinner.hidesWhenStopped = true
             DispatchQueue.main.async {
+                self.dashboardTableView.setContentOffset(.zero, animated: true)
                 self.dashboardTableView.reloadData()
             }
         }
@@ -83,13 +88,10 @@ class DashboardViewController: UIViewController {
             buttonNext.isEnabled = true
             tampungPage = tampungPage + 1
             tampungOffset = tampungOffset + 20
-            changePageNumber(numberPageCount: tampungPage)
+            changePageNumber(numberPageCount: tampungPage, maxPage: tampungMaxPage ?? 0)
             loadPokemonList(offset: "\(tampungOffset)")
             loadBar()
-            
-            let lastPage = Double(pokemonViewModel.pokemonTotalCount!) / 20.0
-            
-            if tampungPage == Int(lastPage.rounded(.up)) {
+            if tampungPage == tampungMaxPage {
                 buttonNext.isEnabled = false
             }
         }else{
@@ -102,10 +104,9 @@ class DashboardViewController: UIViewController {
             buttonNext.isEnabled = true
             tampungPage = tampungPage - 1
             tampungOffset = tampungOffset - 20
-            changePageNumber(numberPageCount: tampungPage)
+            changePageNumber(numberPageCount: tampungPage, maxPage: tampungMaxPage ?? 0)
             loadPokemonList(offset: "\(tampungOffset)")
             loadBar()
-            
             if tampungPage == 1 {
                 buttonPrevious.isEnabled = false
             }
@@ -113,8 +114,6 @@ class DashboardViewController: UIViewController {
         }
 
     }
-    
-    
     
 }
 
