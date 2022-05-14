@@ -22,12 +22,15 @@ extension UIImageView {
         
       URLSession.shared.dataTask(with: url ?? URL(fileURLWithPath: "")) {
         data, response, error in
+          DispatchQueue.global(qos: .utility).async {
+          
         if data != nil {
               DispatchQueue.main.async {
                   let imageToCache = UIImage(data: data!)
                   imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
                   self.image = imageToCache
               }
+          }
           }
      }.resume()
   }

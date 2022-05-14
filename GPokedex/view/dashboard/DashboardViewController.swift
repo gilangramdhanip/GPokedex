@@ -9,6 +9,8 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     
+    @IBOutlet weak var buttonNext: UIButton!
+    @IBOutlet weak var buttonPrevious: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var dashboardTableView: UICollectionView!
     @IBOutlet weak var numberPage: UIButton!
@@ -29,12 +31,12 @@ class DashboardViewController: UIViewController {
         layout.minimumInteritemSpacing = 4
         
         //Call Gallery Collection cell
+        buttonPrevious.isEnabled = false
         dashboardTableView.setCollectionViewLayout(layout, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         changePageNumber(numberPageCount: tampungPage)
-        
         loadPokemonList(offset: "\(tampungOffset)")
         loadBar()
     }
@@ -77,26 +79,37 @@ class DashboardViewController: UIViewController {
     @IBAction func buttonNextPressed(_ sender: Any) {
         
         if ((pokemonViewModel.next?.isEmpty) != nil) {
+            buttonPrevious.isEnabled = true
+            buttonNext.isEnabled = true
             tampungPage = tampungPage + 1
             tampungOffset = tampungOffset + 20
             changePageNumber(numberPageCount: tampungPage)
             loadPokemonList(offset: "\(tampungOffset)")
             loadBar()
+            
+            let lastPage = Double(pokemonViewModel.pokemonTotalCount!) / 20.0
+            
+            if tampungPage == Int(lastPage.rounded(.up)) {
+                buttonNext.isEnabled = false
+            }
         }else{
-
+            buttonNext.isEnabled = false
         }
     }
     
     @IBAction func buttonPrevPressed(_ sender: Any) {
-        
         if ((pokemonViewModel.previous?.isEmpty) != nil) {
+            buttonNext.isEnabled = true
             tampungPage = tampungPage - 1
             tampungOffset = tampungOffset - 20
             changePageNumber(numberPageCount: tampungPage)
             loadPokemonList(offset: "\(tampungOffset)")
             loadBar()
+            
+            if tampungPage == 1 {
+                buttonPrevious.isEnabled = false
+            }
         }else{
-
         }
 
     }
